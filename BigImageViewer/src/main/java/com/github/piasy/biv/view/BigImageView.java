@@ -87,7 +87,7 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
 
     private final ImageLoader mImageLoader;
     private final List<File> mTempImages;
-    private final ImageLoader.Callback mInternalCallback;
+    private ImageLoader.Callback mInternalCallback;
 
     private ImageViewFactory mViewFactory;
 
@@ -205,6 +205,14 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
         }
 
         mViewFactory = viewFactory;
+    }
+
+    public void setImageCallback(ImageLoader.Callback callback) {
+        if (callback == null) {
+            return;
+        }
+
+        mInternalCallback = callback;
     }
 
     public void setFailureImageInitScaleType(ImageView.ScaleType scaleType) {
